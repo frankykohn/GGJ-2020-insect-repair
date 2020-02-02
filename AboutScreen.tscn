@@ -11,7 +11,7 @@ outline_color = Color( 0.607843, 0.0941176, 0.0941176, 1 )
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 40
+size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -47,16 +47,33 @@ align = 1
 [node name="Description" type="Label" parent="VBoxContainer"]
 margin_top = 91.0
 margin_right = 904.0
-margin_bottom = 332.0
+margin_bottom = 288.0
 custom_fonts/font = SubResource( 2 )
 text = "The hive has been on a long journey to a faraway asteroid belt to harvest a magical nectar that might heal their polluted planet. On their return journey hive mothership is hit by flying space debris and attacked by swarms of foul, haunting beings which emerge from the asteroid belt."
 align = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description2" type="Label" parent="VBoxContainer"]
+margin_top = 292.0
+margin_right = 904.0
+margin_bottom = 439.0
+custom_fonts/font = SubResource( 2 )
+text = "W - Up
+A - Left        D -Right
+S - Down "
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Back" type="Button" parent="VBoxContainer"]
-margin_top = 336.0
+margin_top = 443.0
 margin_right = 904.0
-margin_bottom = 411.0
+margin_bottom = 518.0
 custom_fonts/font = SubResource( 3 )
 text = "Back"
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_Back_pressed"]
