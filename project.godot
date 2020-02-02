@@ -19,12 +19,6 @@ config/name="GGJ-2020-Insect-Repair"
 run/main_scene="res://MenuScreen.tscn"
 config/icon="res://icon.png"
 
-[display]
-
-window/size/width=1920
-window/size/height=1080
-window/size/fullscreen=true
-
 [input]
 
 combo_key_1={
