@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GGJ-2020-Insect-Repair"
-run/main_scene="res://Gameplay.tscn"
+run/main_scene="res://MenuScreen.tscn"
 config/icon="res://icon.png"
 
 [input]
