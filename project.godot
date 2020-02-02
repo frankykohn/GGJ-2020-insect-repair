@@ -19,6 +19,13 @@ config/name="GGJ-2020-Insect-Repair"
 run/main_scene="res://MenuScreen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+MenuForwardAudio="*res://MenuForwardAudio.tscn"
+MenuBackAudio="*res://MenuBackAudio.tscn"
+OpeningThemeAudio="*res://OpeningThemeAudio.tscn"
+GameStartAudio="*res://GameStartAudio.tscn"
+
 [display]
 
 window/size/width=1920
