@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://SoundTriggers.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
 [ext_resource path="res://Assets/SFX/key press 3.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/SFX/key press 2.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Music/gameplay music v1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/images/rock_foreground.png" type="Texture" id=6]
 [ext_resource path="res://Insect.gd" type="Script" id=7]
 [ext_resource path="res://Mother_Rig.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player_Rig.tscn" type="PackedScene" id=9]
@@ -17,39 +18,24 @@
 [ext_resource path="res://Enemy_Carrier_Rig.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Assets/SFX/enemy flying.wav" type="AudioStream" id=17]
 [ext_resource path="res://Assets/fonts/Teko-Regular.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://Assets/images/nectarPickup.png" type="Texture" id=19]
+[ext_resource path="res://Mother.gd" type="Script" id=20]
 
-[sub_resource type="Gradient" id=3]
-colors = PoolColorArray( 0.941176, 0.894118, 0.203922, 0.537255, 1, 1, 1, 1 )
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 3.77112, -2.24115, 0, 0, 0, 0, 3348.57, 4.95892 )
+}
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -0.599304, -2.39978, -339.392, -52.1198, 339.392, 52.1198, 632.002, 152.001, 0, 0, 0, 0, 1622, -13.9996 )
+}
 
-[sub_resource type="Curve" id=5]
-min_value = 0.99
-max_value = 205.8
-_data = [ Vector2( 0, 0.345455 ), 0.0, 1.70736, 0, 0, Vector2( 1, 1 ), 2.79702, 0.0, 0, 0 ]
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 31.4007
+height = 36.8425
 
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
-
-[sub_resource type="ParticlesMaterial" id=7]
-lifetime_randomness = 0.75
-trail_size_modifier = SubResource( 6 )
-trail_color_modifier = SubResource( 4 )
-emission_shape = 2
-emission_box_extents = Vector3( 0, 0, 10 )
-flag_disable_z = true
-direction = Vector3( 0, -2, 0 )
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 15.87
-initial_velocity_random = 0.09
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = -7.58
-linear_accel_random = 0.3
-radial_accel = 27.27
-
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=4]
 lifetime_randomness = 0.37
 emission_shape = 1
 emission_sphere_radius = 112.74
@@ -65,14 +51,42 @@ orbit_velocity_random = 0.0
 radial_accel = 1.59
 radial_accel_random = 0.32
 
-[sub_resource type="Curve2D" id=9]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -39.2893, -31.9946, -311.392, 3.88027, 311.392, -3.88027, 512.679, 120.306, 0, 0, 0, 0, 1039.43, -27.1443 )
-}
-
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=5]
 size = 40
 font_data = ExtResource( 18 )
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0.941176, 0.894118, 0.203922, 0.537255, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+min_value = 0.99
+max_value = 205.8
+_data = [ Vector2( 0, 0.345455 ), 0.0, 1.70736, 0, 0, Vector2( 1, 1 ), 2.79702, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+lifetime_randomness = 0.75
+trail_size_modifier = SubResource( 9 )
+trail_color_modifier = SubResource( 7 )
+emission_shape = 2
+emission_box_extents = Vector3( 0, 0, 10 )
+flag_disable_z = true
+direction = Vector3( 0, -2, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 15.87
+initial_velocity_random = 0.09
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -7.58
+linear_accel_random = 0.3
+radial_accel = 27.27
+
+[sub_resource type="CircleShape2D" id=11]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -88,16 +102,33 @@ stream = ExtResource( 3 )
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -9.087
 
-[node name="Mother" type="KinematicBody2D" parent="."]
-position = Vector2( 272.943, 107.48 )
+[node name="Mother" type="Node2D" parent="."]
+script = ExtResource( 20 )
 
-[node name="Mother_Rig" parent="Mother" instance=ExtResource( 8 )]
-position = Vector2( 232.157, 173.821 )
+[node name="Mother_Path" type="Path2D" parent="Mother"]
+position = Vector2( 730.431, 462.642 )
+curve = SubResource( 1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mother"]
-position = Vector2( 168.292, 148.493 )
-polygon = PoolVector2Array( 23.3278, -27.393, 96.1599, -27.393, 126.268, -9.64194, 148.486, 12.9121, 161.921, 34.8324, 193.741, 38.368, 223.439, 32.004, 205.762, -8.30112, 173.235, -37.2925, 206.469, -24.5646, 229.803, 27.0543, 238.289, 36.9538, 241.117, -57.7987, 251.016, -27.393, 243.945, -8.30112, 244.653, 27.7614, 253.845, 59.5812, 249.602, 82.2086, 241.824, 68.7736, 229.803, 65.2381, 191.619, 86.4513, 159.8, 88.5726, 140.001, 128.878, 140.001, 95.6437, 115.252, 106.25, 114.545, 83.6229, 102.524, 78.6731, 95.4528, 102.715, 78.4822, 118.271, 89.0889, 83.6229, 68.5828, 94.2295, 39.5913, 94.2295, 36.0558, 84.33, 62.2188, 82.2086, 71.4112, 68.7736, 40.2984, 60.2883, 12.7213, 69.4807, 1.40753, 86.4513, -11.3204, 104.836, -24.7555, 97.0579, -34.655, 97.0579, -38.8976, 114.736, -55.1611, 92.1082, -118.094, 57.4599, -96.8804, 42.6106, -127.286, 30.5898, -164.056, 43.3177, -244.666, 21.3974, -215.675, 10.0837, -164.056, 22.8116, -124.458, 15.7405, -169.713, -8.30112, -229.817, -46.4849, -173.955, -33.0499, -146.378, -11.1295, -94.7591, -18.9077, -41.0189, 14.3263 )
+[node name="PathFollow2D" type="PathFollow2D" parent="Mother/Mother_Path"]
+position = Vector2( 3.77112, -2.24115 )
+rotation = 0.00215253
+
+[node name="MotherObj" type="KinematicBody2D" parent="Mother/Mother_Path/PathFollow2D"]
+position = Vector2( -3.7663, 2.24927 )
+rotation = -0.00215253
+
+[node name="Camera2D" type="Camera2D" parent="Mother/Mother_Path/PathFollow2D/MotherObj"]
+position = Vector2( 7.56989, -0.641296 )
+current = true
+
+[node name="Mother_Rig" parent="Mother/Mother_Path/PathFollow2D/MotherObj" instance=ExtResource( 8 )]
+position = Vector2( 0.225723, -7.19853 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mother/Mother_Path/PathFollow2D/MotherObj"]
+position = Vector2( -63.6397, -32.5269 )
+polygon = PoolVector2Array( 23.3278, -27.393, 96.1599, -27.393, 126.268, -9.64194, 148.486, 12.9121, 161.921, 34.8324, 193.741, 38.368, 223.439, 32.004, 229.803, 27.0543, 244.653, 27.7614, 253.845, 59.5812, 241.824, 68.7736, 229.803, 65.2381, 191.619, 86.4513, 159.8, 88.5726, 140.001, 95.6437, 114.545, 83.6229, 102.524, 78.6731, 88.4096, 79.3858, 71.4112, 68.7736, 40.2984, 60.2883, 12.7213, 69.4807, 1.40753, 86.4513, -24.7555, 97.0579, -34.655, 97.0579, -55.1611, 92.1082, -118.094, 57.4599, -127.286, 30.5898, -139.091, 0.385712, -122.591, -11.6143, -94.7591, -18.9077, -41.0189, 14.3263 )
 
 [node name="Insect" type="KinematicBody2D" parent="."]
 position = Vector2( 197.456, 295.615 )
@@ -107,64 +138,60 @@ script = ExtResource( 7 )
 position = Vector2( 0, 2.8284 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Insect"]
-polygon = PoolVector2Array( -0.556168, -13.3148, -24.0562, -28.8148, -46.5562, -35.8148, -61.5562, -32.5648, -52.8062, -23.0648, -34.8062, -13.5648, -14.8062, -7.31482, -14.8062, 0.435181, -29.8062, 12.9352, -45.5562, 25.9352, -57.5562, 42.1852, -52.3062, 46.9352, -12.0562, 10.4352, -6.55618, 13.4352, -16.5562, 29.9352, 0.943832, 46.9352, 8.19385, 61.4352, 11.9438, 57.4352, 9.94385, 49.9352, 20.1938, 49.9352, 20.1938, 44.1852, 9.44385, 43.6852, -7.05618, 27.9352, 5.69385, 7.18518, 11.1938, 13.9352, 18.1938, 25.9352, 28.4439, 24.4352, 28.4439, 8.43518, 16.9438, -5.81482, 23.1939, -15.5648, 42.4439, -21.8148, 61.9439, -24.3148, 53.4439, -32.3148, 41.4439, -34.8148, 33.4439, -26.5648, 18.1938, -22.3148, 10.1938, -17.5648, -0.806168, -20.5648 )
+visible = false
+polygon = PoolVector2Array( -24.0562, -28.8148, -46.5562, -35.8148, -61.5562, -32.5648, -52.8062, -23.0648, -34.8062, -13.5648, -14.8062, -7.31482, -16.5562, 29.9352, 0.943832, 46.9352, 12.3739, 49.719, 20.1938, 44.1852, 28.4439, 24.4352, 28.4439, 8.43518, 16.9438, -5.81483, 53.7397, -29.4771, 1.97482, -13.6766, -10.6071, -20.2847 )
+
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2( -107, -61.0001 )
+script = ExtResource( 15 )
+
+[node name="Path2D" type="Path2D" parent="Enemy"]
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemy/Path2D"]
+position = Vector2( -0.599304, -2.39978 )
+rotate = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Enemy/Path2D/PathFollow2D"]
+scale = Vector2( 0.0492951, 0.0492951 )
+stream = ExtResource( 17 )
+volume_db = -4.289
+
+[node name="Enemy_Carrier" parent="Enemy/Path2D/PathFollow2D" instance=ExtResource( 16 )]
+position = Vector2( 38.2272, 29.9579 )
+scale = Vector2( 0.183193, 0.183193 )
+
+[node name="Area2D" type="Area2D" parent="Enemy/Path2D/PathFollow2D/Enemy_Carrier"]
+position = Vector2( -37.8721, -38.0105 )
+scale = Vector2( 5.45872, 5.45872 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Path2D/PathFollow2D/Enemy_Carrier/Area2D"]
+position = Vector2( 4, 10 )
+rotation = 0.872665
+shape = SubResource( 3 )
 
 [node name="ExtremeBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ExtremeBackground"]
 
 [node name="Level_ExtremeBackground_01" type="Sprite" parent="ExtremeBackground/ParallaxLayer"]
-position = Vector2( 1171.02, 300.408 )
-scale = Vector2( 0.508253, 0.508253 )
+position = Vector2( 2088.79, 540.825 )
+scale = Vector2( 0.907285, 0.907285 )
 texture = ExtResource( 10 )
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
-visible = false
 
 [node name="Level_Background_01" type="Sprite" parent="Background/ParallaxLayer"]
-position = Vector2( 1307.48, 311.378 )
-scale = Vector2( 0.57867, 0.57867 )
+position = Vector2( 2352.77, 558.866 )
+scale = Vector2( 1.02699, 1.02699 )
 z_index = 2
 texture = ExtResource( 11 )
-
-[node name="aphid_01" type="Sprite" parent="."]
-position = Vector2( 774.521, 152.853 )
-rotation = -2.9274e-08
-scale = Vector2( 0.509024, 0.435562 )
-texture = ExtResource( 12 )
-
-[node name="Particles2D" type="Particles2D" parent="aphid_01"]
-show_behind_parent = true
-position = Vector2( 16.9999, -52 )
-amount = 15
-lifetime = 55.54
-explosiveness = 0.11
-randomness = 0.18
-process_material = SubResource( 7 )
-texture = ExtResource( 13 )
-
-[node name="aphid_02" type="Sprite" parent="."]
-position = Vector2( 949.663, 396.163 )
-rotation = -0.286234
-scale = Vector2( -0.414228, 0.410918 )
-texture = ExtResource( 12 )
-
-[node name="Particles2D" type="Particles2D" parent="aphid_02"]
-show_behind_parent = true
-position = Vector2( 17, -52 )
-amount = 15
-lifetime = 55.54
-explosiveness = 0.11
-randomness = 0.18
-process_material = SubResource( 7 )
-texture = ExtResource( 13 )
 
 [node name="Atmosphere" type="Node" parent="."]
 
 [node name="Particles2D_clouds" type="Particles2D" parent="Atmosphere"]
-visible = false
 modulate = Color( 1, 1, 1, 0.411765 )
 show_behind_parent = true
 position = Vector2( 1048.53, 287.261 )
@@ -172,11 +199,10 @@ amount = 17
 lifetime = 51.0
 speed_scale = 0.97
 randomness = 0.08
-process_material = SubResource( 8 )
+process_material = SubResource( 4 )
 texture = ExtResource( 14 )
 
 [node name="Particles2D_clouds2" type="Particles2D" parent="Atmosphere"]
-visible = false
 modulate = Color( 1, 1, 1, 0.411765 )
 show_behind_parent = true
 position = Vector2( 1999.9, 299.007 )
@@ -184,36 +210,127 @@ amount = 17
 lifetime = 51.0
 speed_scale = 0.97
 randomness = 0.08
-process_material = SubResource( 8 )
+process_material = SubResource( 4 )
 texture = ExtResource( 14 )
 
-[node name="Node2D" type="Node2D" parent="."]
-script = ExtResource( 15 )
-
-[node name="Path2D" type="Path2D" parent="Node2D"]
-curve = SubResource( 9 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D"]
-position = Vector2( -39.2893, -31.9946 )
-rotate = false
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Node2D/Path2D/PathFollow2D"]
-scale = Vector2( 0.0492951, 0.0492951 )
-stream = ExtResource( 17 )
-volume_db = -5.897
-
-[node name="Enemy_Carrier" parent="Node2D/Path2D/PathFollow2D" instance=ExtResource( 16 )]
-position = Vector2( -39.7728, -31.0422 )
-scale = Vector2( 0.183193, 0.183193 )
-
 [node name="Resources" type="Label" parent="."]
-margin_left = 38.1127
-margin_top = 514.444
-margin_right = 263.113
-margin_bottom = 572.444
-custom_fonts/font = SubResource( 10 )
-text = "Resources: 0"
+margin_left = 104.113
+margin_top = 808.444
+margin_right = 329.113
+margin_bottom = 866.444
+custom_fonts/font = SubResource( 5 )
+text = "Nectar: 0"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="aphid_01" type="Sprite" parent="."]
+position = Vector2( 1372.36, 658.812 )
+rotation = -2.85536
+scale = Vector2( 0.414228, -0.410918 )
+texture = ExtResource( 12 )
+
+[node name="Particles2D" type="Particles2D" parent="aphid_01"]
+modulate = Color( 0.819608, 0.807843, 0.0941176, 0.458824 )
+show_behind_parent = true
+position = Vector2( 17, -52 )
+amount = 15
+lifetime = 55.54
+explosiveness = 0.11
+randomness = 0.18
+process_material = SubResource( 10 )
+texture = ExtResource( 13 )
+
+[node name="rock_01" type="KinematicBody2D" parent="."]
+position = Vector2( 1305.7, 687.649 )
+rotation = 0.0872665
+z_index = -1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rock_01"]
+polygon = PoolVector2Array( 101.601, -23.9998, 100.601, 8.00031, 55.6006, 47.0004, -61.3995, 38.0003, -92.3996, 25.0003, -98.3996, -10.9997, -51.428, -9.55377, 52.3507, -16.6256 )
+
+[node name="Sprite" type="Sprite" parent="rock_01"]
+position = Vector2( 1.68445, 2.74991 )
+scale = Vector2( 0.410984, 0.410984 )
+texture = ExtResource( 6 )
+
+[node name="aphid_02" type="Sprite" parent="."]
+position = Vector2( 1130.52, 172.853 )
+rotation = -2.9274e-08
+scale = Vector2( 0.509024, 0.435562 )
+texture = ExtResource( 12 )
+
+[node name="Particles2D" type="Particles2D" parent="aphid_02"]
+modulate = Color( 0.819608, 0.807843, 0.0941176, 0.458824 )
+show_behind_parent = true
+position = Vector2( 16.9999, -52 )
+amount = 15
+lifetime = 55.54
+explosiveness = 0.11
+randomness = 0.18
+process_material = SubResource( 10 )
+texture = ExtResource( 13 )
+
+[node name="rock_02" type="KinematicBody2D" parent="."]
+position = Vector2( 1201, 208 )
+scale = Vector2( -1, 1 )
+z_index = -1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rock_02"]
+polygon = PoolVector2Array( 101.601, -23.9998, 100.601, 8.00031, 55.6006, 47.0004, -61.3995, 38.0003, -92.3996, 25.0003, -98.3996, -10.9997, -51.428, -9.55377, 52.3507, -16.6256 )
+
+[node name="Sprite" type="Sprite" parent="rock_02"]
+position = Vector2( 1.68445, 2.74991 )
+scale = Vector2( 0.410984, 0.410984 )
+texture = ExtResource( 6 )
+
+[node name="nectar_02" type="RigidBody2D" parent="."]
+position = Vector2( 1256, 186 )
+input_pickable = true
+
+[node name="Sprite" type="Sprite" parent="nectar_02"]
+texture = ExtResource( 19 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_02"]
+shape = SubResource( 11 )
+
+[node name="aphid_03" type="Sprite" parent="."]
+position = Vector2( 136.52, 642.854 )
+rotation = -2.9274e-08
+scale = Vector2( 0.509024, 0.435562 )
+texture = ExtResource( 12 )
+
+[node name="Particles2D" type="Particles2D" parent="aphid_03"]
+modulate = Color( 0.819608, 0.807843, 0.0941176, 0.458824 )
+show_behind_parent = true
+position = Vector2( 16.9999, -52 )
+amount = 15
+lifetime = 55.54
+explosiveness = 0.11
+randomness = 0.18
+process_material = SubResource( 10 )
+texture = ExtResource( 13 )
+
+[node name="rock_03" type="KinematicBody2D" parent="."]
+position = Vector2( 207, 678.001 )
+scale = Vector2( -1, 1 )
+z_index = -1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rock_03"]
+polygon = PoolVector2Array( 101.601, -23.9998, 100.601, 8.00031, 55.6006, 47.0004, -61.3995, 38.0003, -92.3996, 25.0003, -98.3996, -10.9997, -51.428, -9.55377, 52.3507, -16.6256 )
+
+[node name="Sprite" type="Sprite" parent="rock_03"]
+position = Vector2( 1.68445, 2.74991 )
+scale = Vector2( 0.410984, 0.410984 )
+texture = ExtResource( 6 )
+
+[node name="nectar_03" type="RigidBody2D" parent="."]
+position = Vector2( 262, 656 )
+input_pickable = true
+
+[node name="Sprite" type="Sprite" parent="nectar_03"]
+texture = ExtResource( 19 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_03"]
+shape = SubResource( 11 )
