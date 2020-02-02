@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://SoundTriggers.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://Player_Rig.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/images/env/Level_ExtremeBackground_01.png" type="Texture" id=10]
 [ext_resource path="res://Assets/images/env/Level_Background_01.png" type="Texture" id=11]
-[ext_resource path="res://aphid_01.png" type="Texture" id=12]
+[ext_resource path="res://Assets/images/spaceAphid_03.png" type="Texture" id=12]
 [ext_resource path="res://Assets/nectar_bubble.png" type="Texture" id=13]
 [ext_resource path="res://Assets/atmosphereClouds.png" type="Texture" id=14]
 [ext_resource path="res://EnemyCarrierMovement.gd" type="Script" id=15]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Assets/images/rocks03.png" type="Texture" id=21]
 [ext_resource path="res://Assets/images/rocks02.png" type="Texture" id=22]
 [ext_resource path="res://Assets/images/rocks04.png" type="Texture" id=23]
+[ext_resource path="res://cirtter_emitter.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -138,7 +139,8 @@ position = Vector2( 197.456, 295.615 )
 script = ExtResource( 7 )
 
 [node name="CharacterRig" parent="Insect" instance=ExtResource( 9 )]
-position = Vector2( 0, 2.8284 )
+position = Vector2( -0.0714722, 9.38043 )
+rotation = -0.333358
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Insect"]
 visible = false
@@ -163,6 +165,10 @@ volume_db = -4.289
 [node name="Enemy_Carrier" parent="Enemy/Path2D/PathFollow2D" instance=ExtResource( 16 )]
 position = Vector2( 38.2272, 29.9579 )
 scale = Vector2( 0.183193, 0.183193 )
+
+[node name="Critter" parent="Enemy/Path2D/PathFollow2D/Enemy_Carrier" instance=ExtResource( 24 )]
+position = Vector2( 378.683, 182.551 )
+scale = Vector2( 5.45872, 5.45872 )
 
 [node name="Area2D" type="Area2D" parent="Enemy/Path2D/PathFollow2D/Enemy_Carrier"]
 position = Vector2( -37.8721, -38.0105 )
@@ -229,8 +235,8 @@ __meta__ = {
 }
 
 [node name="aphid_01" type="Sprite" parent="."]
-position = Vector2( 1372.36, 658.812 )
-rotation = -2.85536
+position = Vector2( 1346.76, 636.005 )
+rotation = -3.12588
 scale = Vector2( 0.414228, -0.410918 )
 texture = ExtResource( 12 )
 
@@ -259,8 +265,8 @@ scale = Vector2( 0.410984, 0.410984 )
 texture = ExtResource( 6 )
 
 [node name="aphid_02" type="Sprite" parent="."]
-position = Vector2( 1266.78, 181.41 )
-rotation = -2.9274e-08
+position = Vector2( 1225.35, 164.654 )
+rotation = -0.0680678
 scale = Vector2( 0.509024, 0.435562 )
 texture = ExtResource( 12 )
 
@@ -298,7 +304,7 @@ texture = ExtResource( 19 )
 shape = SubResource( 11 )
 
 [node name="aphid_03" type="Sprite" parent="."]
-position = Vector2( 136.52, 642.854 )
+position = Vector2( 157.913, 642.525 )
 rotation = -2.9274e-08
 scale = Vector2( 0.509024, 0.435562 )
 texture = ExtResource( 12 )
