@@ -1,0 +1,177 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0005_healing-spout-welder.png" type="Texture" id=1]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0007_H3.png" type="Texture" id=2]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0003_T2.png" type="Texture" id=3]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0006_H2.png" type="Texture" id=4]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0014_P3.png" type="Texture" id=5]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0012_player-body.png" type="Texture" id=6]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0004_T3.png" type="Texture" id=7]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0008_H4.png" type="Texture" id=8]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0013_P2.png" type="Texture" id=9]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0001_tweezer-claw.png" type="Texture" id=10]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0010_S2.png" type="Texture" id=11]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0011_S3.png" type="Texture" id=12]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0009_saw-stab-claw.png" type="Texture" id=13]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0002_T1.png" type="Texture" id=14]
+[ext_resource path="res://bug_assets/player/gameMockupStyleExploration_0000s_0000_wing.png" type="Texture" id=15]
+
+[node name="CharacterRig" type="Node2D"]
+position = Vector2( 282.843, 678.823 )
+
+[node name="Torso" type="Sprite" parent="."]
+position = Vector2( -3.87342, -4.61419 )
+scale = Vector2( 0.131122, 0.131122 )
+texture = ExtResource( 6 )
+offset = Vector2( 24.986, 16.147 )
+
+[node name="Torso2" type="Sprite" parent="Torso"]
+position = Vector2( -71.4192, 27.441 )
+rotation = 0.00527603
+texture = ExtResource( 9 )
+offset = Vector2( -25.6522, 11.4637 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Torso3" type="Sprite" parent="Torso/Torso2"]
+position = Vector2( -58.2539, 61.7531 )
+texture = ExtResource( 5 )
+offset = Vector2( 7.94781, 46.2908 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Position2D" type="Position2D" parent="Torso/Torso2/Torso3"]
+position = Vector2( -2.83684, 94.2164 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="wing" type="Sprite" parent="Torso"]
+position = Vector2( 54.3708, -52.7926 )
+rotation = -0.00215719
+texture = ExtResource( 15 )
+offset = Vector2( 204.945, -94.4769 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Grab" type="Sprite" parent="Torso"]
+position = Vector2( 1.84993, 27.5995 )
+rotation = -0.840254
+texture = ExtResource( 10 )
+offset = Vector2( -145.812, 175.444 )
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="G2" type="Sprite" parent="Torso/Grab"]
+position = Vector2( -69.6175, 223.776 )
+rotation = 6.81567
+texture = ExtResource( 14 )
+offset = Vector2( -88.0557, 42.6254 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="G3" type="Sprite" parent="Torso/Grab/G2"]
+position = Vector2( -175.775, 89.3369 )
+rotation = 0.315099
+texture = ExtResource( 3 )
+offset = Vector2( -45.5344, 6.4944 )
+
+[node name="G4" type="Sprite" parent="Torso/Grab/G2/G3"]
+position = Vector2( -0.629158, -0.40477 )
+rotation = -0.529535
+texture = ExtResource( 7 )
+offset = Vector2( -31.8637, 30.3255 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Position2D" type="Position2D" parent="Torso/Grab/G2"]
+position = Vector2( -172.331, 86.4815 )
+rotation = -0.352973
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Heal" type="Sprite" parent="Torso"]
+position = Vector2( 57.6555, 8.82874 )
+rotation = -0.433681
+texture = ExtResource( 1 )
+offset = Vector2( 23.6366, 45.9283 )
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="H1" type="Sprite" parent="Torso/Heal"]
+position = Vector2( 47.0714, 85.3914 )
+rotation = -7.10509
+texture = ExtResource( 4 )
+offset = Vector2( -40.832, 99.9532 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="H2" type="Sprite" parent="Torso/Heal/H1"]
+position = Vector2( -70.468, 195.357 )
+rotation = -0.169327
+texture = ExtResource( 2 )
+offset = Vector2( -24.8973, 42.8557 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="H3" type="Sprite" parent="Torso/Heal/H1/H2"]
+position = Vector2( -58.7122, 82.4521 )
+rotation = -0.279452
+texture = ExtResource( 8 )
+offset = Vector2( -39.9008, 25.3037 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Position2D" type="Position2D" parent="Torso/Heal/H1/H2/H3"]
+position = Vector2( -76.0514, 48.3575 )
+rotation = 0.878486
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Saw" type="Sprite" parent="Torso"]
+position = Vector2( -64.1729, -26.4025 )
+rotation = 0.380647
+texture = ExtResource( 13 )
+offset = Vector2( -71.7194, -32.4055 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="S1" type="Sprite" parent="Torso/Saw"]
+position = Vector2( -89.5814, -73.6078 )
+rotation = -0.514215
+texture = ExtResource( 11 )
+offset = Vector2( -45.2037, -18.3987 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="S2" type="Sprite" parent="Torso/Saw/S1"]
+position = Vector2( -118.011, -60.7945 )
+rotation = -11.3482
+texture = ExtResource( 12 )
+offset = Vector2( -35.8728, 65.1671 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Position2D" type="Position2D" parent="Torso/Saw/S1/S2"]
+position = Vector2( -118.682, 109.037 )
+rotation = -0.752616
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}

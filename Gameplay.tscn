@@ -7,14 +7,13 @@
 [ext_resource path="res://Assets/Music/gameplay music v1.wav" type="AudioStream" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://Insect.gd" type="Script" id=7]
-[ext_resource path="res://Assets/images/insect-example.png" type="Texture" id=8]
+[ext_resource path="res://Player_Rig.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 61, 58.5999 )
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 32.8004
-height = 6.0
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 50.6538, 70.2313 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -32,27 +31,25 @@ stream = ExtResource( 3 )
 stream = ExtResource( 5 )
 
 [node name="Mother" type="KinematicBody2D" parent="."]
+position = Vector2( 272.943, 107.48 )
 
 [node name="MCollisionShape2D" type="CollisionShape2D" parent="Mother"]
-position = Vector2( 515, 311 )
+position = Vector2( 236.4, 180.892 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="MSprite" type="Sprite" parent="Mother"]
-position = Vector2( 515, 311 )
+position = Vector2( 234.986, 183.721 )
 texture = ExtResource( 6 )
 
 [node name="Insect" type="KinematicBody2D" parent="."]
-position = Vector2( 172, 314 )
+position = Vector2( 197.456, 295.615 )
 script = ExtResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="Insect"]
-position = Vector2( 1.5, 1.5 )
-rotation = 1.5708
-scale = Vector2( 0.151667, 0.151667 )
-texture = ExtResource( 8 )
-
 [node name="ICollisionShape2D" type="CollisionShape2D" parent="Insect"]
-position = Vector2( 0, 4 )
+position = Vector2( 0, 9.65686 )
 rotation = 1.5708
 shape = SubResource( 2 )
+
+[node name="CharacterRig" parent="Insect" instance=ExtResource( 9 )]
+position = Vector2( 0, 2.8284 )
