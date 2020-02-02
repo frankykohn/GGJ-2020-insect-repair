@@ -18,6 +18,7 @@
 
 [node name="CharacterRig" type="Node2D"]
 position = Vector2( 282.843, 678.823 )
+scale = Vector2( -1, 1 )
 
 [node name="Torso" type="Sprite" parent="."]
 position = Vector2( -3.87342, -4.61419 )

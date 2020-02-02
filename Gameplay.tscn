@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://SoundTriggers.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
@@ -7,10 +7,13 @@
 [ext_resource path="res://Assets/Music/gameplay music v1.wav" type="AudioStream" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://Insect.gd" type="Script" id=7]
+[ext_resource path="res://Mother_Rig.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player_Rig.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/images/env/Level_ExtremeBackground_01.png" type="Texture" id=10]
+[ext_resource path="res://Assets/images/env/Level_Background_01.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 61, 58.5999 )
+extents = Vector2( 63.3108, 162.809 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 50.6538, 70.2313 )
@@ -38,7 +41,11 @@ position = Vector2( 236.4, 180.892 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
+[node name="Mother_Rig" parent="Mother" instance=ExtResource( 8 )]
+position = Vector2( 232.157, 173.821 )
+
 [node name="MSprite" type="Sprite" parent="Mother"]
+visible = false
 position = Vector2( 234.986, 183.721 )
 texture = ExtResource( 6 )
 
@@ -53,3 +60,21 @@ shape = SubResource( 2 )
 
 [node name="CharacterRig" parent="Insect" instance=ExtResource( 9 )]
 position = Vector2( 0, 2.8284 )
+
+[node name="ExtremeBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ExtremeBackground"]
+
+[node name="Level_ExtremeBackground_01" type="Sprite" parent="ExtremeBackground/ParallaxLayer"]
+position = Vector2( 1171.02, 298.65 )
+scale = Vector2( 0.508253, 0.508253 )
+texture = ExtResource( 10 )
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+
+[node name="Level_Background_01" type="Sprite" parent="Background/ParallaxLayer"]
+position = Vector2( 1307.48, 311.378 )
+scale = Vector2( 0.57867, 0.57867 )
+texture = ExtResource( 11 )
