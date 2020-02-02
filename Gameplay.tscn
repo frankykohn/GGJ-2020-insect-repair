@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://SoundTriggers.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
@@ -24,10 +24,11 @@
 [ext_resource path="res://Assets/images/rocks02.png" type="Texture" id=22]
 [ext_resource path="res://Assets/images/rocks04.png" type="Texture" id=23]
 [ext_resource path="res://cirtter_emitter.tscn" type="PackedScene" id=24]
+[ext_resource path="res://icon.png" type="Texture" id=25]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 3.77112, -2.24115, 0, 0, 0, 0, 3348.57, 4.95892 )
+"points": PoolVector2Array( 0, 0, 0, 0, 3.77112, -2.24115, 0, 0, 0, 0, 2796.09, -2.1528 )
 }
 
 [sub_resource type="Curve2D" id=2]
@@ -92,6 +93,21 @@ radial_accel = 27.27
 
 [sub_resource type="CircleShape2D" id=11]
 
+[sub_resource type="DynamicFont" id=12]
+size = 60
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 48
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 48
+font_data = ExtResource( 18 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 304.213, 344.756 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -116,7 +132,7 @@ position = Vector2( 730.431, 462.642 )
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Mother/Mother_Path"]
-position = Vector2( 3.77112, -2.24115 )
+position = Vector2( -9.26135, -2.24115 )
 rotation = 0.00215253
 
 [node name="MotherObj" type="KinematicBody2D" parent="Mother/Mother_Path/PathFollow2D"]
@@ -382,3 +398,67 @@ texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_04"]
 shape = SubResource( 11 )
+
+[node name="End" type="WindowDialog" parent="."]
+margin_left = 3111.57
+margin_top = 252.276
+margin_right = 3936.57
+margin_bottom = 718.276
+window_title = "End"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="End"]
+margin_left = 8.37805
+margin_top = 72.6097
+margin_right = 808.378
+margin_bottom = 377.61
+custom_fonts/font = SubResource( 12 )
+text = "The hive has arrived with the vital nectar to  heal their home planet.
+"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayAgain" type="Button" parent="End"]
+margin_left = 192.695
+margin_top = 322.089
+margin_right = 350.695
+margin_bottom = 397.089
+custom_fonts/font = SubResource( 13 )
+text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="End"]
+margin_left = 496.167
+margin_top = 320.227
+margin_right = 662.167
+margin_bottom = 395.227
+custom_fonts/font = SubResource( 14 )
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Planet" type="Node2D" parent="."]
+position = Vector2( 148.943, -53.9918 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Planet"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/KinematicBody2D"]
+position = Vector2( 3759.99, 537.52 )
+shape = SubResource( 15 )
+
+[node name="Sprite" type="Sprite" parent="Planet/KinematicBody2D"]
+position = Vector2( 3745.75, 512.828 )
+scale = Vector2( 5.74947, 5.74947 )
+z_index = -1
+texture = ExtResource( 25 )
+[connection signal="pressed" from="End/PlayAgain" to="." method="_on_PlayAgain_pressed"]
+[connection signal="pressed" from="End/MainMenu" to="." method="_on_MainMenu_pressed"]
