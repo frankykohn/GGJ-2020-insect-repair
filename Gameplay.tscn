@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://SoundTriggers.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
@@ -11,12 +11,62 @@
 [ext_resource path="res://Player_Rig.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/images/env/Level_ExtremeBackground_01.png" type="Texture" id=10]
 [ext_resource path="res://Assets/images/env/Level_Background_01.png" type="Texture" id=11]
+[ext_resource path="res://aphid_01.png" type="Texture" id=12]
+[ext_resource path="res://Assets/nectar_bubble.png" type="Texture" id=13]
+[ext_resource path="res://Assets/atmosphereClouds.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 63.3108, 162.809 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 50.6538, 70.2313 )
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0.941176, 0.894118, 0.203922, 0.537255, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=3]
+min_value = 0.99
+max_value = 205.8
+_data = [ Vector2( 0, 0.345455 ), 0.0, 1.70736, 0, 0, Vector2( 1, 1 ), 2.79702, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 0.75
+trail_size_modifier = SubResource( 4 )
+trail_color_modifier = SubResource( 7 )
+emission_shape = 2
+emission_box_extents = Vector3( 0, 0, 10 )
+flag_disable_z = true
+direction = Vector3( 0, -2, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 15.87
+initial_velocity_random = 0.09
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -7.58
+linear_accel_random = 0.3
+radial_accel = 27.27
+
+[sub_resource type="ParticlesMaterial" id=8]
+lifetime_randomness = 0.37
+emission_shape = 1
+emission_sphere_radius = 112.74
+flag_disable_z = true
+direction = Vector3( -3, 0.1, 0 )
+spread = 26.68
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 21.74
+angular_velocity = 1.0
+angular_velocity_random = 0.07
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 1.59
+radial_accel_random = 0.32
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -66,7 +116,7 @@ position = Vector2( 0, 2.8284 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ExtremeBackground"]
 
 [node name="Level_ExtremeBackground_01" type="Sprite" parent="ExtremeBackground/ParallaxLayer"]
-position = Vector2( 1171.02, 298.65 )
+position = Vector2( 1171.02, 300.408 )
 scale = Vector2( 0.508253, 0.508253 )
 texture = ExtResource( 10 )
 
@@ -77,4 +127,61 @@ texture = ExtResource( 10 )
 [node name="Level_Background_01" type="Sprite" parent="Background/ParallaxLayer"]
 position = Vector2( 1307.48, 311.378 )
 scale = Vector2( 0.57867, 0.57867 )
+z_index = 2
 texture = ExtResource( 11 )
+
+[node name="aphid_01" type="Sprite" parent="."]
+position = Vector2( 774.521, 152.853 )
+rotation = -2.9274e-08
+scale = Vector2( 0.509024, 0.435562 )
+texture = ExtResource( 12 )
+
+[node name="Particles2D" type="Particles2D" parent="aphid_01"]
+show_behind_parent = true
+position = Vector2( 17, -52 )
+amount = 15
+lifetime = 55.54
+explosiveness = 0.11
+randomness = 0.18
+process_material = SubResource( 5 )
+texture = ExtResource( 13 )
+
+[node name="aphid_02" type="Sprite" parent="."]
+position = Vector2( 949.663, 396.163 )
+rotation = -0.286234
+scale = Vector2( -0.414228, 0.410918 )
+texture = ExtResource( 12 )
+
+[node name="Particles2D" type="Particles2D" parent="aphid_02"]
+show_behind_parent = true
+position = Vector2( 17, -52 )
+amount = 15
+lifetime = 55.54
+explosiveness = 0.11
+randomness = 0.18
+process_material = SubResource( 5 )
+texture = ExtResource( 13 )
+
+[node name="Atmosphere" type="Node" parent="."]
+
+[node name="Particles2D_clouds" type="Particles2D" parent="Atmosphere"]
+modulate = Color( 1, 1, 1, 0.411765 )
+show_behind_parent = true
+position = Vector2( 1048.53, 287.261 )
+amount = 17
+lifetime = 51.0
+speed_scale = 0.97
+randomness = 0.08
+process_material = SubResource( 8 )
+texture = ExtResource( 14 )
+
+[node name="Particles2D_clouds2" type="Particles2D" parent="Atmosphere"]
+modulate = Color( 1, 1, 1, 0.411765 )
+show_behind_parent = true
+position = Vector2( 1999.9, 299.007 )
+amount = 17
+lifetime = 51.0
+speed_scale = 0.97
+randomness = 0.08
+process_material = SubResource( 8 )
+texture = ExtResource( 14 )
