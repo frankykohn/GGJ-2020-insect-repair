@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://SoundTriggers.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
@@ -20,6 +20,9 @@
 [ext_resource path="res://Assets/fonts/Teko-Regular.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://Assets/images/nectarPickup.png" type="Texture" id=19]
 [ext_resource path="res://Mother.gd" type="Script" id=20]
+[ext_resource path="res://Assets/images/rocks03.png" type="Texture" id=21]
+[ext_resource path="res://Assets/images/rocks02.png" type="Texture" id=22]
+[ext_resource path="res://Assets/images/rocks04.png" type="Texture" id=23]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -28,7 +31,7 @@ _data = {
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -0.599304, -2.39978, -339.392, -52.1198, 339.392, 52.1198, 632.002, 152.001, 0, 0, 0, 0, 1622, -13.9996 )
+"points": PoolVector2Array( 0, 0, 0, 0, -0.599304, -2.39978, -339.392, -52.1198, 339.392, 52.1198, 632.002, 152.001, 0, 0, 0, 0, 1826.52, -17.1157 )
 }
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -256,7 +259,7 @@ scale = Vector2( 0.410984, 0.410984 )
 texture = ExtResource( 6 )
 
 [node name="aphid_02" type="Sprite" parent="."]
-position = Vector2( 1130.52, 172.853 )
+position = Vector2( 1266.78, 181.41 )
 rotation = -2.9274e-08
 scale = Vector2( 0.509024, 0.435562 )
 texture = ExtResource( 12 )
@@ -274,7 +277,6 @@ texture = ExtResource( 13 )
 
 [node name="rock_02" type="KinematicBody2D" parent="."]
 position = Vector2( 1201, 208 )
-scale = Vector2( -1, 1 )
 z_index = -1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rock_02"]
@@ -283,10 +285,10 @@ polygon = PoolVector2Array( 101.601, -23.9998, 100.601, 8.00031, 55.6006, 47.000
 [node name="Sprite" type="Sprite" parent="rock_02"]
 position = Vector2( 1.68445, 2.74991 )
 scale = Vector2( 0.410984, 0.410984 )
-texture = ExtResource( 6 )
+texture = ExtResource( 22 )
 
 [node name="nectar_02" type="RigidBody2D" parent="."]
-position = Vector2( 1256, 186 )
+position = Vector2( 1131.59, 197.848 )
 input_pickable = true
 
 [node name="Sprite" type="Sprite" parent="nectar_02"]
@@ -323,7 +325,7 @@ polygon = PoolVector2Array( 101.601, -23.9998, 100.601, 8.00031, 55.6006, 47.000
 [node name="Sprite" type="Sprite" parent="rock_03"]
 position = Vector2( 1.68445, 2.74991 )
 scale = Vector2( 0.410984, 0.410984 )
-texture = ExtResource( 6 )
+texture = ExtResource( 21 )
 
 [node name="nectar_03" type="RigidBody2D" parent="."]
 position = Vector2( 262, 656 )
@@ -333,4 +335,44 @@ input_pickable = true
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_03"]
+shape = SubResource( 11 )
+
+[node name="aphid_04" type="Sprite" parent="."]
+position = Vector2( 268.168, 141.274 )
+rotation = -2.9274e-08
+scale = Vector2( 0.509024, 0.435562 )
+texture = ExtResource( 12 )
+
+[node name="Particles2D" type="Particles2D" parent="aphid_04"]
+modulate = Color( 0.819608, 0.807843, 0.0941176, 0.458824 )
+show_behind_parent = true
+position = Vector2( 16.9999, -52 )
+amount = 15
+lifetime = 55.54
+explosiveness = 0.11
+randomness = 0.18
+process_material = SubResource( 10 )
+texture = ExtResource( 13 )
+
+[node name="rock_04" type="KinematicBody2D" parent="."]
+position = Vector2( 338.648, 176.421 )
+scale = Vector2( -1, 1 )
+z_index = -1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rock_04"]
+polygon = PoolVector2Array( 101.601, -23.9998, 100.601, 8.00031, 55.6006, 47.0004, -61.3995, 38.0003, -92.3996, 25.0003, -98.3996, -10.9997, -51.428, -9.55377, 52.3507, -16.6256 )
+
+[node name="Sprite" type="Sprite" parent="rock_04"]
+position = Vector2( 1.68445, 2.74991 )
+scale = Vector2( 0.410984, 0.410984 )
+texture = ExtResource( 23 )
+
+[node name="nectar_04" type="RigidBody2D" parent="."]
+position = Vector2( 393.648, 154.42 )
+input_pickable = true
+
+[node name="Sprite" type="Sprite" parent="nectar_04"]
+texture = ExtResource( 19 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_04"]
 shape = SubResource( 11 )
