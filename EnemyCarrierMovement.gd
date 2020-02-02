@@ -10,6 +10,7 @@ var location = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Path2D/PathFollow2D/AudioStreamPlayer2D.play()
 	pass # Replace with function body.
 
 
