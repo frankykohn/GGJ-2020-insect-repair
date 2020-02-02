@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://SoundTriggers.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Player_Rig.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/images/env/Level_ExtremeBackground_01.png" type="Texture" id=10]
 [ext_resource path="res://Assets/images/env/Level_Background_01.png" type="Texture" id=11]
+[ext_resource path="res://Enemy_Carrier_Rig.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 63.3108, 162.809 )
@@ -78,3 +79,9 @@ texture = ExtResource( 10 )
 position = Vector2( 1307.48, 311.378 )
 scale = Vector2( 0.57867, 0.57867 )
 texture = ExtResource( 11 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Enemy_Carrier" parent="." instance=ExtResource( 12 )]
+position = Vector2( -53.2841, -34.2981 )
+scale = Vector2( 0.170934, 0.170934 )
