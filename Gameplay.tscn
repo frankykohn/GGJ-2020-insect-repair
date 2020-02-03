@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://SoundTriggers.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
@@ -62,26 +62,26 @@ radial_accel_random = 0.32
 size = 40
 font_data = ExtResource( 18 )
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=6]
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=7]
 colors = PoolColorArray( 0.941176, 0.894118, 0.203922, 0.537255, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id=9]
 min_value = 0.99
 max_value = 205.8
 _data = [ Vector2( 0, 0.345455 ), 0.0, 1.70736, 0, 0, Vector2( 1, 1 ), 2.79702, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=9]
-curve = SubResource( 8 )
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
 
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=11]
 lifetime_randomness = 0.75
-trail_size_modifier = SubResource( 9 )
-trail_color_modifier = SubResource( 7 )
+trail_size_modifier = SubResource( 10 )
+trail_color_modifier = SubResource( 8 )
 emission_shape = 2
 emission_box_extents = Vector3( 0, 0, 10 )
 flag_disable_z = true
@@ -94,6 +94,10 @@ orbit_velocity_random = 0.0
 linear_accel = -7.58
 linear_accel_random = 0.3
 radial_accel = 27.27
+
+[sub_resource type="DynamicFont" id=12]
+size = 24
+font_data = ExtResource( 18 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -487,7 +491,8 @@ volume_db = -9.087
 script = ExtResource( 20 )
 
 [node name="Mother_Path" type="Path2D" parent="Mother"]
-position = Vector2( 730.431, 462.642 )
+position = Vector2( 730.564, 462.497 )
+scale = Vector2( 0.964655, 0.935359 )
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Mother/Mother_Path"]
@@ -644,7 +649,7 @@ input_pickable = true
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_02"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="ClusterAA01" type="Node2D" parent="."]
 position = Vector2( 547.619, 612.45 )
@@ -663,7 +668,7 @@ amount = 15
 lifetime = 55.54
 explosiveness = 0.11
 randomness = 0.18
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="rock_04" type="KinematicBody2D" parent="ClusterAA01"]
@@ -794,7 +799,7 @@ amount = 15
 lifetime = 55.54
 explosiveness = 0.11
 randomness = 0.18
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="nectar_03" type="RigidBody2D" parent="ClusterBB"]
@@ -806,7 +811,7 @@ z_index = 3
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClusterBB/nectar_03"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="rock_03" type="KinematicBody2D" parent="ClusterBB"]
 position = Vector2( 207, 678.001 )
@@ -929,7 +934,7 @@ amount = 15
 lifetime = 55.54
 explosiveness = 0.11
 randomness = 0.18
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="nectar_03" type="RigidBody2D" parent="ClusterBB2"]
@@ -941,7 +946,7 @@ z_index = 3
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClusterBB2/nectar_03"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="rock_03" type="KinematicBody2D" parent="ClusterBB2"]
 position = Vector2( 207, 678.001 )
@@ -1064,7 +1069,7 @@ amount = 15
 lifetime = 55.54
 explosiveness = 0.11
 randomness = 0.18
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="nectar_03" type="RigidBody2D" parent="ClusterBB3"]
@@ -1076,7 +1081,7 @@ z_index = 3
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClusterBB3/nectar_03"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="rock_03" type="KinematicBody2D" parent="ClusterBB3"]
 position = Vector2( 207, 678.001 )
@@ -1199,7 +1204,7 @@ amount = 15
 lifetime = 55.54
 explosiveness = 0.11
 randomness = 0.18
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="nectar_03" type="RigidBody2D" parent="ClusterBB4"]
@@ -1211,7 +1216,7 @@ z_index = 3
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClusterBB4/nectar_03"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="rock_03" type="KinematicBody2D" parent="ClusterBB4"]
 position = Vector2( 207, 678.001 )
@@ -1334,7 +1339,7 @@ amount = 15
 lifetime = 55.54
 explosiveness = 0.11
 randomness = 0.18
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="nectar_03" type="RigidBody2D" parent="ClusterBB5"]
@@ -1346,7 +1351,7 @@ z_index = 3
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClusterBB5/nectar_03"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="rock_03" type="KinematicBody2D" parent="ClusterBB5"]
 position = Vector2( 207, 678.001 )
@@ -1461,7 +1466,7 @@ input_pickable = true
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_groupB"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="nectar_groupB5" type="RigidBody2D" parent="."]
 position = Vector2( 1181.39, 329.696 )
@@ -1473,7 +1478,7 @@ input_pickable = true
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_groupB5"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="ClusterGroupB" type="Node2D" parent="."]
 position = Vector2( 622.484, 226.331 )
@@ -1493,7 +1498,7 @@ amount = 15
 lifetime = 55.54
 explosiveness = 0.11
 randomness = 0.18
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="rocks02" type="Sprite" parent="ClusterGroupB"]
@@ -1607,7 +1612,7 @@ input_pickable = true
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_groupB2"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="ClusterGroupB2" type="Node2D" parent="."]
 position = Vector2( 1549.33, 599.531 )
@@ -1627,7 +1632,7 @@ amount = 15
 lifetime = 55.54
 explosiveness = 0.11
 randomness = 0.18
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="rocks02" type="Sprite" parent="ClusterGroupB2"]
@@ -1741,7 +1746,7 @@ input_pickable = true
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_groupB3"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="ClusterGroupB3" type="Node2D" parent="."]
 position = Vector2( 2658.79, 257.908 )
@@ -1761,7 +1766,7 @@ amount = 15
 lifetime = 55.54
 explosiveness = 0.11
 randomness = 0.18
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="rocks02" type="Sprite" parent="ClusterGroupB3"]
@@ -1875,7 +1880,7 @@ input_pickable = true
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nectar_groupB4"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="ClusterGroupB4" type="Node2D" parent="."]
 position = Vector2( 3436.39, 635.32 )
@@ -1895,7 +1900,7 @@ amount = 15
 lifetime = 55.54
 explosiveness = 0.11
 randomness = 0.18
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="rocks02" type="Sprite" parent="ClusterGroupB4"]
@@ -2020,3 +2025,42 @@ position = Vector2( 197.56, 4.76849 )
 rotation = 0.226616
 scale = Vector2( 0.308387, 0.453465 )
 texture = ExtResource( 27 )
+
+[node name="End" type="WindowDialog" parent="."]
+margin_left = 3791.63
+margin_top = 375.917
+margin_right = 4113.63
+margin_bottom = 582.917
+window_title = "End"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="End"]
+margin_left = 28.0
+margin_top = 35.0
+margin_right = 288.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 12 )
+text = "The hive has arrived with the vital nectar to  heal their home planet."
+align = 1
+autowrap = true
+
+[node name="PlayAgain" type="Button" parent="End"]
+margin_left = 75.4023
+margin_top = 149.874
+margin_right = 152.402
+margin_bottom = 169.874
+text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="End"]
+margin_left = 169.422
+margin_top = 149.874
+margin_right = 252.422
+margin_bottom = 169.874
+text = "Main Menu"
+[connection signal="pressed" from="End/PlayAgain" to="." method="_on_PlayAgain_pressed"]
+[connection signal="pressed" from="End/MainMenu" to="." method="_on_MainMenu_pressed"]
