@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	OpeningThemeAudio.stop()
 	$MainMusic.play()
 	pass
 		

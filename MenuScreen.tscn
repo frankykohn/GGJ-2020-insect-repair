@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/fonts/Teko-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/images/env/Level_ExtremeBackground_01.png" type="Texture" id=2]
 [ext_resource path="res://return_to_title.gd" type="Script" id=3]
+[ext_resource path="res://Mother_Rig.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Theme" id=1]
-
-[sub_resource type="DynamicFont" id=2]
-size = 60
-font_data = ExtResource( 1 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -16,6 +12,13 @@ anchor_bottom = 1.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="Level_ExtremeBackground_01" type="Sprite" parent="."]
+position = Vector2( 598, 531.8 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -29,46 +32,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-margin_right = 1760.0
-margin_bottom = 128.0
-texture = ExtResource( 2 )
-stretch_mode = 4
-
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 132.0
 margin_right = 1760.0
 margin_bottom = 980.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="TextureRect" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+margin_bottom = 980.0
+visible_characters = 5
+text = "Comet Queen"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 4.0
 margin_right = 1760.0
-margin_bottom = 848.0
+margin_bottom = 980.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 1760.0
-margin_bottom = 93.0
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 1756.0
+margin_bottom = 14.0
 theme = SubResource( 1 )
-custom_fonts/font = SubResource( 2 )
+text = "Comet Queen"
+align = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 1756.0
+margin_bottom = 38.0
+theme = SubResource( 1 )
+custom_constants/hseparation = 0
 action_mode = 0
 text = "Start Game"
 
 [node name="AboutButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 97.0
-margin_right = 1760.0
-margin_bottom = 190.0
-custom_fonts/font = SubResource( 2 )
+margin_top = 42.0
+margin_right = 1756.0
+margin_bottom = 62.0
 text = "About"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 194.0
-margin_right = 1760.0
-margin_bottom = 287.0
-custom_fonts/font = SubResource( 2 )
+margin_top = 66.0
+margin_right = 1756.0
+margin_bottom = 86.0
 text = "Credits"
+
+[node name="Mother_Rig" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+position = Vector2( 773.607, 624.498 )
+scale = Vector2( 1.53978, 1.53978 )
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/AboutButton" to="." method="_on_AboutButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]

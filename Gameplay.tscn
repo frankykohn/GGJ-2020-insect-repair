@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
 [ext_resource path="res://Assets/SFX/key press 3.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/SFX/key press 2.wav" type="AudioStream" id=4]
-[ext_resource path="res://Assets/Music/gameplay music v1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Music/gameplay music v2.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/images/rock_foreground.png" type="Texture" id=6]
 [ext_resource path="res://Insect.gd" type="Script" id=7]
 [ext_resource path="res://Mother_Rig.tscn" type="PackedScene" id=8]
@@ -486,7 +486,7 @@ stream = ExtResource( 3 )
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -9.087
+volume_db = -10.097
 
 [node name="Mother" type="Node2D" parent="."]
 script = ExtResource( 20 )
