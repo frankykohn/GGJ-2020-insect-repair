@@ -4,3 +4,4 @@
 
 [node name="MenuBack" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
+volume_db = -6.058
