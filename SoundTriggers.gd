@@ -12,5 +12,10 @@ func _input(event):
 		$KSound.play()
 	if(event.is_action_pressed("combo_key_3")):
 		$LSound.play()
-	
-	
+
+func _on_PlayAgain_pressed():
+	get_tree().change_scene('res://Gameplay.tscn')
+
+
+func _on_MainMenu_pressed():
+	get_tree().change_scene('res://MenuScreen.tscn')

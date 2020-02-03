@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://SoundTriggers.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Assets/images/env/shroom.png" type="Texture" id=25]
 [ext_resource path="res://Assets/images/env/foliage.png" type="Texture" id=26]
 [ext_resource path="res://Assets/images/env/ff.png" type="Texture" id=27]
+[ext_resource path="res://Assets/images/env/homeHive.png" type="Texture" id=28]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -94,6 +95,10 @@ orbit_velocity_random = 0.0
 linear_accel = -7.58
 linear_accel_random = 0.3
 radial_accel = 27.27
+
+[sub_resource type="DynamicFont" id=12]
+size = 24
+font_data = ExtResource( 18 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -487,7 +492,8 @@ volume_db = -10.097
 script = ExtResource( 20 )
 
 [node name="Mother_Path" type="Path2D" parent="Mother"]
-position = Vector2( 730.431, 462.642 )
+position = Vector2( 730.564, 462.497 )
+scale = Vector2( 0.964655, 0.935359 )
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Mother/Mother_Path"]
@@ -2020,3 +2026,50 @@ position = Vector2( 197.56, 4.76849 )
 rotation = 0.226616
 scale = Vector2( 0.308387, 0.453465 )
 texture = ExtResource( 27 )
+
+[node name="End" type="WindowDialog" parent="."]
+margin_left = 3791.63
+margin_top = 375.917
+margin_right = 4113.63
+margin_bottom = 582.917
+window_title = "End"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="End"]
+margin_left = 28.0
+margin_top = 35.0
+margin_right = 288.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 12 )
+text = "The hive has arrived with the vital nectar to  heal their home planet."
+align = 1
+autowrap = true
+
+[node name="PlayAgain" type="Button" parent="End"]
+margin_left = 75.4023
+margin_top = 149.874
+margin_right = 152.402
+margin_bottom = 169.874
+text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="End"]
+margin_left = 169.422
+margin_top = 149.874
+margin_right = 252.422
+margin_bottom = 169.874
+text = "Main Menu"
+
+[node name="Hive" type="Node2D" parent="."]
+position = Vector2( 4157.45, 460.769 )
+
+[node name="Sprite" type="Sprite" parent="Hive"]
+position = Vector2( -102.685, -2.30392 )
+scale = Vector2( 0.792655, 0.792655 )
+texture = ExtResource( 28 )
+[connection signal="pressed" from="End/PlayAgain" to="." method="_on_PlayAgain_pressed"]
+[connection signal="pressed" from="End/MainMenu" to="." method="_on_MainMenu_pressed"]
