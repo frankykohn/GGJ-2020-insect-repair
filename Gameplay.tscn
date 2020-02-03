@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://SoundTriggers.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SFX/key press 1.wav" type="AudioStream" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Assets/images/env/shroom.png" type="Texture" id=25]
 [ext_resource path="res://Assets/images/env/foliage.png" type="Texture" id=26]
 [ext_resource path="res://Assets/images/env/ff.png" type="Texture" id=27]
+[ext_resource path="res://Assets/images/env/homeHive.png" type="Texture" id=28]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -2062,5 +2063,13 @@ margin_top = 149.874
 margin_right = 252.422
 margin_bottom = 169.874
 text = "Main Menu"
+
+[node name="Hive" type="Node2D" parent="."]
+position = Vector2( 4157.45, 460.769 )
+
+[node name="Sprite" type="Sprite" parent="Hive"]
+position = Vector2( -102.685, -2.30392 )
+scale = Vector2( 0.792655, 0.792655 )
+texture = ExtResource( 28 )
 [connection signal="pressed" from="End/PlayAgain" to="." method="_on_PlayAgain_pressed"]
 [connection signal="pressed" from="End/MainMenu" to="." method="_on_MainMenu_pressed"]
